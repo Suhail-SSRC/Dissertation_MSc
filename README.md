@@ -34,6 +34,7 @@ We document the steps on how to setup a Pi:
 
 - Download image - [![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)](https://ubuntu.com/raspberry-pi)
 - SD Card formatter (Format to start with fresh images) - [![Download](https://img.shields.io/badge/SD%20Formatter-SD-blue)](https://www.sdcard.org/downloads/formatter/)
+- BalenaEtcher (To flash the OS) [![BalenaEtcher](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Etcher_%28software%29_logo.svg/120px-Etcher_%28software%29_logo.svg.png)](https://etcher.balena.io/)
 
 ## Installation
 
