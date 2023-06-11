@@ -47,3 +47,14 @@ sudo apt upgrade
 
 - Setting SSH keys and connecting to pi's without passwords - [SSH Pi's](https://danidudas.medium.com/how-to-connect-to-raspberry-pi-via-ssh-without-password-using-ssh-keys-3abd782688a)
 - Follow this for more useful information [Click Me](https://www.raspberrypi.com/documentation/computers/remote-access.html#connecting-to-your-raspberry-pi)
+
+## Tools
+- top (To measure CPU, and memory consumption) This is by default installed in Ubuntu
+- powerTop (To measure power consumption of process)
+```bash
+sudo apt install powertop
+```
+- perf (To measure Cache hits/misses and branches)
+```bash
+sudo apt install perf
+```
