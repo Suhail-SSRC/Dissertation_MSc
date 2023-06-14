@@ -6,8 +6,6 @@
 #include <random>
 using namespace std;
 
-//const unsigned int BLOCK_BYTES_LENGTH = 16 * sizeof(unsigned char);
-
 
 int main() {
   /*AES aes(AESKeyLength::AES_128);
@@ -71,12 +69,13 @@ int main() {
 
     AES aes(AESKeyLength::AES_256);
     unsigned char* c = aes.EncryptECB(plain, BLOCK_BYTES_LENGTH, key);
+    unsigned char *innew = aes.DecryptECB(c, BLOCK_BYTES_LENGTH, key);
 
-    /*if(memcmp(right, c, BLOCK_BYTES_LENGTH) == 0) {
+    if(memcmp(innew, plain, BLOCK_BYTES_LENGTH) == 0) {
         std::cout << "Encryption was successful and the result matches the expected output." << std::endl;
     } else {
         std::cout << "Encryption failed or the result does not match the expected output." << std::endl;
-    }*/
+    }
 
 
     std::cout << "Ciphertext: ";
@@ -86,7 +85,7 @@ int main() {
     std::cout << std::endl;
 
     delete[] c;
-
+    delete[] innew;
     return 0;
 }
 

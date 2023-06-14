@@ -6,8 +6,6 @@
 #include <random>
 using namespace std;
 
-//const unsigned int BLOCK_BYTES_LENGTH = 16 * sizeof(unsigned char);
-
 
 int main() {
   /*AES aes(AESKeyLength::AES_128);
@@ -33,6 +31,7 @@ int main() {
     std::uniform_int_distribution<> distr(0, 255); // define the range
 
     unsigned char plain[1000];
+    unsigned char iv[1000];
     unsigned char key[32];
     //unsigned char right[16];
     //unsigned int plainLen = sizeof(plain);
@@ -50,6 +49,10 @@ int main() {
         plain[i] = distr(gen);
         //key[i] = distr(gen);
     }
+    for(int i = 0; i < 1000; ++i) {
+         iv[i] = distr(gen);
+         //key[i] = distr(gen);
+     }
     for(int i = 0; i < 32; ++i) {
          //plain[i] = distr(gen);
          key[i] = distr(gen);
@@ -63,20 +66,28 @@ int main() {
     }
     std::cout << std::endl;
 
+    std::cout << "IV: ";
+    for(int i = 0; i < 1000; ++i) {
+        std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(iv[i]) << " ";
+    }
+    std::cout << std::endl;
+
+
     std::cout << "Key: ";
-    for(int i = 0; i < 24; ++i) {
+    for(int i = 0; i < 32; ++i) {
         std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(key[i]) << " ";
     }
     std::cout << std::endl;
 
     AES aes(AESKeyLength::AES_256);
-    unsigned char* c = aes.EncryptECB(plain, BLOCK_BYTES_LENGTH, key);
+    unsigned char* c = aes.EncryptCBC(plain, 2 * BLOCK_BYTES_LENGTH, key, iv);
+    unsigned char *innew = aes.DecryptCBC(c, 2 * BLOCK_BYTES_LENGTH, key, iv);
 
-    /*if(memcmp(right, c, BLOCK_BYTES_LENGTH) == 0) {
+    if(memcmp(innew, plain, BLOCK_BYTES_LENGTH) == 0) {
         std::cout << "Encryption was successful and the result matches the expected output." << std::endl;
     } else {
         std::cout << "Encryption failed or the result does not match the expected output." << std::endl;
-    }*/
+    }
 
 
     std::cout << "Ciphertext: ";
@@ -86,7 +97,7 @@ int main() {
     std::cout << std::endl;
 
     delete[] c;
-
+    delete[] innew;
     return 0;
 }
 
