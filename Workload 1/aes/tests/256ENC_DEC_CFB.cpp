@@ -30,8 +30,8 @@ int main() {
     std::mt19937 gen(rd()); // seed the generator
     std::uniform_int_distribution<> distr(0, 255); // define the range
 
-    unsigned char plain[1000];
-    unsigned char iv[1000];
+    unsigned char plain[1024];
+    unsigned char iv[1024];
     unsigned char key[32];
     //unsigned char right[16];
     //unsigned int plainLen = sizeof(plain);
@@ -45,11 +45,11 @@ int main() {
     //                       0xd8, 0xcd, 0xb7, 0x80, 0x70, 0xb4, 0xc5, 0x5a};
 
     // fill plain[] and key[] with random values
-    for(int i = 0; i < 1000; ++i) {
+    for(int i = 0; i < 1024; ++i) {
         plain[i] = distr(gen);
         //key[i] = distr(gen);
     }
-    for(int i = 0; i < 1000; ++i) {
+    for(int i = 0; i < 1024; ++i) {
          iv[i] = distr(gen);
          //key[i] = distr(gen);
      }
@@ -61,13 +61,13 @@ int main() {
 
     // print plain[] and key[] in hexadecimal
     std::cout << "Plaintext: ";
-    for(int i = 0; i < 1000; ++i) {
+    for(int i = 0; i < 1024; ++i) {
         std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(plain[i]) << " ";
     }
     std::cout << std::endl;
 
     std::cout << "IV: ";
-    for(int i = 0; i < 1000; ++i) {
+    for(int i = 0; i < 1024; ++i) {
         std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(iv[i]) << " ";
     }
     std::cout << std::endl;
@@ -80,8 +80,8 @@ int main() {
     std::cout << std::endl;
 
     AES aes(AESKeyLength::AES_256);
-    unsigned char* c = aes.EncryptCBC(plain, 2 * BLOCK_BYTES_LENGTH, key, iv);
-    unsigned char *innew = aes.DecryptCBC(c, 2 * BLOCK_BYTES_LENGTH, key, iv);
+    unsigned char* c = aes.EncryptCFB(plain, 2 * BLOCK_BYTES_LENGTH, key, iv);
+    unsigned char *innew = aes.DecryptCFB(c, 2 * BLOCK_BYTES_LENGTH, key, iv);
 
     if(memcmp(innew, plain, BLOCK_BYTES_LENGTH) == 0) {
         std::cout << "Encryption was successful and the result matches the expected output." << std::endl;

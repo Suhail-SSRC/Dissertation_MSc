@@ -32,7 +32,7 @@ int main() {
     std::mt19937 gen(rd()); // seed the generator
     std::uniform_int_distribution<> distr(0, 255); // define the range
 
-    unsigned char plain[1000];
+    unsigned char plain[1024];
     unsigned char key[32];
     //unsigned char right[16];
     //unsigned int plainLen = sizeof(plain);
@@ -46,7 +46,7 @@ int main() {
     //                       0xd8, 0xcd, 0xb7, 0x80, 0x70, 0xb4, 0xc5, 0x5a};
 
     // fill plain[] and key[] with random values
-    for(int i = 0; i < 1000; ++i) {
+    for(int i = 0; i < 1024; ++i) {
         plain[i] = distr(gen);
         //key[i] = distr(gen);
     }
@@ -58,13 +58,13 @@ int main() {
 
     // print plain[] and key[] in hexadecimal
     std::cout << "Plaintext: ";
-    for(int i = 0; i < 1000; ++i) {
+    for(int i = 0; i < 1024; ++i) {
         std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(plain[i]) << " ";
     }
     std::cout << std::endl;
 
     std::cout << "Key: ";
-    for(int i = 0; i < 24; ++i) {
+    for(int i = 0; i < 32; ++i) {
         std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(key[i]) << " ";
     }
     std::cout << std::endl;

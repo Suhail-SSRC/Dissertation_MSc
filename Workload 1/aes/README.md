@@ -1,7 +1,3 @@
-# Note
-
-This is taken from https://github.com/SergeyBel/AES
-
 # AES
 C++ AES(Advanced Encryption Standard) implementation  
  
