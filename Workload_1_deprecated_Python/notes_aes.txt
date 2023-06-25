@@ -1,11 +1,3 @@
-https://github.com/topics/aes-algorithm
-
-https://github.com/Mehul2205/Cryptography-Assignments
-
-https://github.com/gabrielmbmb/aes
-
-https://github.com/muhammadmiziev/FilesCrypter
-
-https://github.com/pavelkryukov/putty-aes-ni - This is intersting and might take some time
-
-https://github.com/fxxce/Symmetric-Encryption
+version https://git-lfs.github.com/spec/v1
+oid sha256:2c6c14d555c74e154418f0dd8a53fdd5a3b93e142e7e90b33f484957d795e18d
+size 317

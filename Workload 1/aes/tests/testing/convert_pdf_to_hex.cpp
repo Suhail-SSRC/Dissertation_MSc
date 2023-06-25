@@ -38,11 +38,11 @@ size_t getVectorSize(const std::vector<std::string>& vec) {
 }
 
 int main() {
-    std::string filename = "SEcomplete.pdf"; // Replace this with the path to your file
+    std::string filename = "SEcomplete2.pdf"; // Replace this with the path to your file
     std::vector<std::string> hexArr = readFileToHex(filename);
 
     // Output the hexadecimal representation of the file to a text file
-    std::ofstream outputFile("SE_array.txt");
+    std::ofstream outputFile("SE2_array.txt");
     for (const auto& hex : hexArr) {
         outputFile << hex << " ";
     }
