@@ -19,8 +19,8 @@ int main() {
          key[i] = distr(gen);
     }
 
-    // Read the content of SE2_array.txt into plain vector
-    std::ifstream inputFile("SE2_array.txt");
+    // Read the content of SE4_array.txt into plain vector
+    std::ifstream inputFile("SE4_array.txt");
     std::vector<unsigned char> plain;
     int value;
     while(inputFile >> std::hex >> value){
